@@ -1,6 +1,6 @@
 import UIKit
 
-public class DocumentBrowser: NSObject, DocumentBrowsing, UIDocumentBrowserViewControllerDelegate {
+public class DocumentBrowser: DocumentBrowsing {
 
   public init(viewControllerFactory: DocumentBrowserViewControllerCreating,
               documentInitializer: DocumentInitializing,
@@ -8,15 +8,18 @@ public class DocumentBrowser: NSObject, DocumentBrowsing, UIDocumentBrowserViewC
               documentPresenter: DocumentPresenting) {
     self.viewControllerFactory = viewControllerFactory
     self.documentInitializer = documentInitializer
-    self.documentCreator = documentCreator
     self.documentPresenter = documentPresenter
-    super.init()
+    self.viewControllerDelegate = DocumentBrowserViewControllerDelegate(
+      documentInitializer: documentInitializer,
+      documentCreator: documentCreator,
+      documentPresenter: documentPresenter
+    )
   }
 
   let viewControllerFactory: DocumentBrowserViewControllerCreating
   let documentInitializer: DocumentInitializing
-  let documentCreator: DocumentCreating
   let documentPresenter: DocumentPresenting
+  let viewControllerDelegate: DocumentBrowserViewControllerDelegate
 
   // MARK: - DocumentBrowsing
 
@@ -33,47 +36,13 @@ public class DocumentBrowser: NSObject, DocumentBrowsing, UIDocumentBrowserViewC
     }
   }
 
-  // MARK: - UIDocumentBrowserViewControllerDelegate
-
-  public func documentBrowser(
-    _ controller: UIDocumentBrowserViewController,
-    didRequestDocumentCreationWithHandler
-    importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void
-  ) {
-    documentCreator.createDocument(importHandler: importHandler)
-  }
-
-  public func documentBrowser(
-    _ controller: UIDocumentBrowserViewController,
-    didPickDocumentsAt documentURLs: [URL]
-  ) {
-    guard let url = documentURLs.first else { return }
-    let document = documentInitializer.initializeDocument(with: url)
-    document.open { [documentPresenter] success in
-      guard success else { return }
-      documentPresenter.presentDocument(document, from: controller)
-    }
-  }
-
-  public func documentBrowser(
-    _ controller: UIDocumentBrowserViewController,
-    didImportDocumentAt sourceURL: URL,
-    toDestinationURL destinationURL: URL
-  ) {
-    let document = documentInitializer.initializeDocument(with: destinationURL)
-    document.open { [documentPresenter] success in
-      guard success else { return }
-      documentPresenter.presentDocument(document, from: controller)
-    }
-  }
-
   // MARK: - Private
 
   private lazy var browserViewController: UIDocumentBrowserViewController = {
     let controller = viewControllerFactory.createViewController()
     controller.allowsDocumentCreation = true
     controller.allowsPickingMultipleItems = false
-    controller.delegate = self
+    controller.delegate = self.viewControllerDelegate
     return controller
   }()
 
