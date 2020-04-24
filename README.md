@@ -19,7 +19,7 @@
 
 ## 📝 Usage
 
-`DocumentBrowsing` protocol is the main interface of the package. It provides an instance of document browser view controller that you can present in your app. Is also allows to open document located at provided URL, which is the feature you want to use when implementing deep-links.
+`DocumentBrowsing` protocol is the main interface of the package. It provides an instance of a document browser view controller that you can present in your app. Is also allows to open document located at the provided URL, which is the feature you want to use when implementing deep-links.
 
 ```swift
 public protocol DocumentBrowsing {
@@ -59,7 +59,7 @@ public protocol DocumentInitializing {
 }
 ```
 
-Document object factory you can implement by conforming to `DocumentInitializing` protocol. The factory should return an instance of `UIDocument` subclass.
+Document object factory you can implement by conforming to `DocumentInitializing` protocol. The factory should return an instance of the `UIDocument` subclass.
 
 #### 🧩 `DocumentCreating`
 
@@ -69,10 +69,10 @@ public protocol DocumentCreating {
 }
 ```
 
-Factory for creating new documents. It's used when user requests new document creation from the browser. You can implement the logic by confirming to `DocumentCreating` protocol, or use one of the included implemenations:
+Factory for creating new documents. It's used when the user requests a new document creation from the browser. You can implement the logic by confirming to `DocumentCreating` protocol, or use one of the included implementations:
 
-- `EmptyDocumentCreator` - creates new document file in a temporary directory and then imports (moves) it into desired location
-- `TemplateDocumentCreator` - creates new document file by copying given template file into desired location
+- `EmptyDocumentCreator` - Creates a new document file in a temporary directory and then imports (moves) it into the desired location.
+- `TemplateDocumentCreator` - Creates a new document file by copying given template file into the desired location.
 
 #### 🧩 `DocumentPresenting`
 
@@ -82,7 +82,7 @@ public protocol DocumentPresenting {
 }
 ```
 
-Document user interface presenter. You should implement the logic of presenting `UIDocument` in your app by conforming to `DocumentPresenting` protocol.
+Document user interface presenter. You should implement the logic of presenting `UIDocument` in your app by conforming to `DocumentPresenting` protocol. Document presenter is used when opening existing or creating a new document from the browser. The `document` parameter passed to `presentDocument` function is an instance of `UIDocument` subclass, returned by document initializer (see: `DocumentInitializing`). The view controller parameter is the browser view controller instance that was used to open the document.
 
 ## 🛠 Development
 
@@ -92,7 +92,7 @@ You can open `Package.swift` in Xcode:
 open Package.swift
 ```
 
-Xcode build scheme is set up for building the library and running unit tests suit.
+Xcode build scheme is set up for building the library and running unit tests suite.
 
 ## 📄 License
 
