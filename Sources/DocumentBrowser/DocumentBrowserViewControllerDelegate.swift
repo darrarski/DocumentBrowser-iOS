@@ -1,6 +1,6 @@
 import UIKit
 
-class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
+final class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
 
   init(documentInitializer: DocumentInitializing,
        documentCreator: DocumentCreating,

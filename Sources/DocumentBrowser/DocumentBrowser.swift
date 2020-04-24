@@ -1,6 +1,6 @@
 import UIKit
 
-public class DocumentBrowser: DocumentBrowsing {
+public final class DocumentBrowser: DocumentBrowsing {
 
   public init(viewControllerFactory: DocumentBrowserViewControllerCreating,
               documentInitializer: DocumentInitializing,
