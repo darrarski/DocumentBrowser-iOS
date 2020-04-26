@@ -8,6 +8,7 @@ public final class DocumentBrowser: DocumentBrowsing {
               documentPresenter: DocumentPresenting) {
     self.viewControllerFactory = viewControllerFactory
     self.documentInitializer = documentInitializer
+    self.documentCreator = documentCreator
     self.documentPresenter = documentPresenter
     self.viewControllerDelegate = DocumentBrowserViewControllerDelegate(
       documentInitializer: documentInitializer,
@@ -18,6 +19,7 @@ public final class DocumentBrowser: DocumentBrowsing {
 
   let viewControllerFactory: DocumentBrowserViewControllerCreating
   let documentInitializer: DocumentInitializing
+  let documentCreator: DocumentCreating
   let documentPresenter: DocumentPresenting
   let viewControllerDelegate: DocumentBrowserViewControllerDelegate
 
