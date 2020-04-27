@@ -1,9 +1,10 @@
 # 📦 DocumentBrowser-iOS
 
 ![swift v5.2](https://img.shields.io/badge/swift-v5.2-orange.svg)
-![swift package manager compatible](https://img.shields.io/badge/swift%20package%20manager-✓-green.svg)
-![platform iOS v11](https://img.shields.io/badge/platform-iOS%20v11-blue.svg)
-![test coverage 100%](https://img.shields.io/badge/test_covergage-100%25-green.svg)
+![platform iOS v11](https://img.shields.io/badge/platform-iOS_v11-blue.svg)
+![swift package manager compatible](https://img.shields.io/badge/swift_package_manager-✓-green.svg)
+![carthage compatible](https://img.shields.io/badge/carthage-✓-green.svg?style=flat)
+![test coverage 100%](https://img.shields.io/badge/test_coverage-100%25-green.svg)
 
 **DocumentBrowser** is a convenient wrapper for `UIDocumentBrowserViewController` for use in document-based iOS applications.
 
@@ -15,7 +16,15 @@
 
 ## 🧰 Installation
 
-**DocumentBrowser** is compatible with [Swift Package Manager](https://swift.org/package-manager/). You can add it as a dependency to your [Xcode project](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) or [swift package](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md#defining-dependencies). The minimum deployment target for the library is **iOS 11**.
+- Minimum deployment target: *iOS 11*
+
+#### Swift Package Manager / Xcode
+
+DocumentBrowser is compatible with [Swift Package Manager](https://swift.org/package-manager/). You can add it as a dependency to your [Xcode project](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) or [swift package](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md#defining-dependencies).
+
+#### Carthage
+
+You can use [Carthage](https://github.com/Carthage/Carthage) to build DocumentBrowser framework. Follow Carthage [documentation](https://github.com/Carthage/Carthage/blob/master/README.md) for instructions.
 
 ## 📝 Usage
 
