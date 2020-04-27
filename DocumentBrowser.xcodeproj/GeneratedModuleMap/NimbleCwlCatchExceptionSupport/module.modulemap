@@ -1,0 +1,4 @@
+module NimbleCwlCatchExceptionSupport {
+    umbrella "/Users/darrarski/Dev/DocumentBrowser-iOS/.build/checkouts/Nimble/Carthage/Checkouts/CwlPreconditionTesting/Dependencies/CwlCatchException/Sources/CwlCatchExceptionSupport/include"
+    export *
+}
