@@ -9,7 +9,6 @@ let package = Package(
   products: [
     .library(
       name: "DocumentBrowser",
-      type: .dynamic,
       targets: [
         "DocumentBrowser"
       ]
